@@ -1,0 +1,91 @@
+//-
+	Index.pug
+
+	This is the home page for this project. It is configured to auto-connect
+	to the server's websocket and handle any events fired from the server end.
+//-
+
+extends base
+
+//- The visual portion of the page
+block content
+
+	div(class='panel panel-default')
+		div.panel-body
+			h1 MQTT Tracker
+			p Simple Website for tracking population 'heat maps' using MQTT
+			p See the number of users nearby each of four areas below.
+
+			div(class='row')
+				div(class='col-md-3 text-center counter-container')
+					h2 Area #1
+					div(class="counter-subcontainer")
+						h3(id='mbed1-counter') 0
+					
+				div(class='col-md-3 text-center counter-container')
+					h2 Area #2
+					div(class="counter-subcontainer")
+						h3(id='mbed2-counter') 0
+					
+				div(class='col-md-3 text-center counter-container')
+					h2 Area #3
+					div(class="counter-subcontainer")
+						h3(id='mbed3-counter') 0
+				
+				div(class='col-md-3 text-center counter-container')
+					h2 Area #4	
+					div(class="counter-subcontainer")
+						h3(id='mbed4-counter') 0
+
+	div(class='panel panel-default')
+		div.panel-body
+			// Implement the graphics portion in the canvas supplied below
+			div.well
+				canvas(id='grid')
+	
+	div(class='panel')
+		div.panel-body
+			button(class='btn btn-primary', type='button', data-toggle='collapse', data-target='#debugLog', aria-expanded='false', aria-controls='debugLog') Show Debug Log
+			div(id='debugLog', class='collapse')
+				div(id='debugLogList', class='well')
+
+//- The scripts needed by this page
+block scripts
+	script(type='text/javascript').
+		$(() => {
+			var socket = io();
+
+			// Handle socket events here
+			//--------------------------
+			// Adds to the debug list
+			socket.on('debug', data => {
+				var time = new Date();
+				$('#debugLogList').append('<div>' + time + ': ' + data.type + ' | ' + data.msg + '</div>');
+			});
+			// Update counter values
+			socket.on('areaOneCounterUpdate', function(data) {
+				console.log('areaOneCounterUpdate', data);
+				$('#mbed1-counter').html(data.value);
+			});
+			socket.on('areaTwoCounterUpdate', function(data) {
+				console.log('areaTwoCounterUpdate', data);
+				$('#mbed2-counter').html(data.value);
+			});
+			socket.on('areaThreeCounterUpdate', function(data) {
+				console.log('areaThreeCounterUpdate', data);
+				$('#mbed3-counter').html(data.value);
+			});
+			socket.on('areaFourCounterUpdate', function(data) {
+				console.log('areaFourCounterUpdate', data);
+				$('#mbed4-counter').html(data.value);
+			});
+			//--------------------------
+		});
+	
+	script(type='text/javascript').
+		$(() => {
+			// Handle any canvas code here
+			//----------------------------
+			var canv = $('#grid');
+			//----------------------------
+		});

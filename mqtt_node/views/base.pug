@@ -1,0 +1,27 @@
+//-
+	Base.pug
+
+	The base template file for all other templates. Content should
+	be inserted into the 'content' block while any custom scripts
+	should be inserted into the 'scripts' block
+//-
+
+doctype html
+html(lang="en")
+	head
+		title= title
+		link(rel='stylesheet', href='/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/css/normalize.css')
+		link(rel='stylesheet', href='/css/style.css')
+
+	body
+		div.container
+			block content
+	
+	// Include all needed scripts
+	script(type='text/javascript', src='/js/socket.io.js')
+	script(type='text/javascript', src='/js/jquery-2.1.4.min.js')
+	script(type='text/javascript', src='/js/bootstrap.min.js')
+
+	// Allow for custom scripts per page
+	block scripts

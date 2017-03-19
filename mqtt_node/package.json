@@ -1,0 +1,18 @@
+{
+  "name": "mqtt_node",
+  "version": "1.0.0",
+  "description": "A simple MQTT client with Nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicholas Cioli",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mosca": "^2.2.0",
+    "nems": "^1.3.0",
+    "pug": "^2.0.0-beta11",
+    "socket.io": "^1.7.3"
+  }
+}

@@ -1,0 +1,22 @@
+/*
+ * Style.css
+ *
+ * Add any stylistic rules here
+ */
+
+body {
+	background-color: #333333;
+}
+
+.container {
+	margin-top: 2em;
+}
+
+#debugLogList {
+	margin-top: 0.5em;
+	font-family: monospace;
+}
+
+#grid {
+	width: 100%;	
+}
