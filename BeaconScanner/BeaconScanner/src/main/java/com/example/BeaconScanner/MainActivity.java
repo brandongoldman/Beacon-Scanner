@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
+    // Declare Global Variables
+    private String serverAddress = "http://45.55.64.92/";
 
     private static final Map<String, List<String>> PLACES_BY_BEACONS;
 
@@ -134,5 +136,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void sendMessageToServer(final Region region)
+    {
+        Log.i("Sending to server... ","URL: " + serverAddress);
     }
 }
