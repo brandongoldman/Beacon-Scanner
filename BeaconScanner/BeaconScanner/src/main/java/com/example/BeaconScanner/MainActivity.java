@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendMessageToServer(final Region region)
     {
+        String serverMessage = serverAddress + "/" + region.getProximityUUID();
         Log.i("Sending to server... ","URL: " + serverAddress);
     }
 }
