@@ -9,9 +9,9 @@
  */
  
 // Retrieve options from .env
-require('dotenv').config({ silent: false });
+//require('dotenv').config({ silent: false });
 
-var mbedAPI = require('mbed-connector-api');
+//var mbedAPI = require('mbed-connector-api');
 
 var express   = require('express'),
 	app       = express();
@@ -21,7 +21,14 @@ var path      = require('path');
 
 var conf      = require(path.join(__dirname, 'config'));
 var internals = require(path.join(__dirname, 'internals'));
+var mqttReq   = require('mqtt')
+var mqtt	  = mqttReq.connect();
 
+// Subcribe to area updates
+mqtt.subscribe("/areaUpdate/1");
+mqtt.subscribe("/areaUpdate/2");
+mqtt.subscribe("/areaUpdate/3");
+mqtt.subscribe("/areaUpdate/4");
 
 // -- Setup the application
 setupExpress();
