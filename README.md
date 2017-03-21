@@ -1,5 +1,5 @@
 # CIS4930 (Mobile & Pervasive Computing), Lab 4
-# University of Florida, Spring 2017
+## University of Florida, Spring 2017
 
 ### Team: ACES
 ##### Cody Fitzpatrick, Brandon Goldman, Erik Higginbotham, Sammy Howe, Jason Hsu
