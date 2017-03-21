@@ -28,20 +28,22 @@ public class MyApplication extends Application {
             public void onEnteredRegion(Region region, List<Beacon> list) {
                 showNotification(
                         "Beacon Found!",
-                        "Your connection has been logged.");
+                        "You're connected to Beacon ID #" + region.getMajor());
             }
             @Override
             public void onExitedRegion(Region region) {
                 showNotification(
                         "Beacon Lost!",
-                        "You are out of beacon range.");
+                        "You're no longer near Beacon ID #" + region.getMajor());
             }
         });
+
+        // Added Sammy's beacons
         beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
             @Override
             public void onServiceReady() {
                 beaconManager.startMonitoring(new Region("monitored region",
-                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 50284, 36053));
+                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 52574, 62553));
             }
         });
 
@@ -49,7 +51,7 @@ public class MyApplication extends Application {
             @Override
             public void onServiceReady() {
                 beaconManager.startMonitoring(new Region("monitored region",
-                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 51124, 51456));
+                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 10753, 6023));
             }
         });
 
@@ -57,7 +59,7 @@ public class MyApplication extends Application {
             @Override
             public void onServiceReady() {
                 beaconManager.startMonitoring(new Region("monitored region",
-                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 59661, 7626));
+                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 46940, 42755));
             }
         });
     }

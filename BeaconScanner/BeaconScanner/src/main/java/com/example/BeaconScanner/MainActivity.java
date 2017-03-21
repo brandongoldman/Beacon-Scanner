@@ -27,6 +27,40 @@ public class MainActivity extends AppCompatActivity {
     static {
         Map<String, List<String>> placesByBeacons = new HashMap<>();
         // handle beacon 1
+        placesByBeacons.put("52574:62553", new ArrayList<String>() {{
+            add("Region 1");
+            // read as: "Region 1" is closest
+            add("Region 2");
+            // "Region 2" is the next closest
+            add("Region 3");
+            // "Region 3" is the furthest away
+        }});
+
+        // handle beacon 2
+        placesByBeacons.put("10753:6023", new ArrayList<String>() {{
+            add("Region 1");
+            // read as: "Region 1" is closest
+            add("Region 2");
+            // "Region 2" is the next closest
+            add("Region 3");
+            // "Region 3" is the furthest away
+        }});
+
+        // handle beacon 3
+        placesByBeacons.put("46940:42755", new ArrayList<String>() {{
+            add("Region 1");
+            // read as: "Region 1" is closest
+            add("Region 2");
+            // "Region 2" is the next closest
+            add("Region 3");
+            // "Region 3" is the furthest away
+        }});
+        PLACES_BY_BEACONS = Collections.unmodifiableMap(placesByBeacons);
+    }
+
+      /* Brandon's Beacons
+        Map<String, List<String>> placesByBeacons = new HashMap<>();
+        // handle beacon 1
         placesByBeacons.put("50284:36053", new ArrayList<String>() {{
             add("Region 1");
             // read as: "Region 1" is closest
@@ -56,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             // "Region 3" is the furthest away
         }});
         PLACES_BY_BEACONS = Collections.unmodifiableMap(placesByBeacons);
-    }
+    }*/
 
     private List<String> placesNearBeacon(Beacon beacon) {
         String beaconKey = String.format("%d:%d", beacon.getMajor(), beacon.getMinor());
